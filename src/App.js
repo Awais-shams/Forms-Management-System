@@ -1,21 +1,21 @@
 
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Dashboard from './components/dashboard/Dashboard';
 import TopBar from './components/top-bar/TopBar';
 
 const theme=createTheme({
   palette: {
     type: 'light',
     primary: {
-      main: '#610C63',
-      light:"#EE81B3"
+      main: '#54BAB9',
     },
     secondary: {
-      main: '#810955',
+      main: '#9ED2C6',
     },
     text: {
-      primary: '#610C63',
-      secondary: '#810955',
+      primary: '#100F0F',
+      secondary: '#0F3D3E',
     },
   },
   typography: {
@@ -41,12 +41,12 @@ const theme=createTheme({
   },
 })
 
-console.log(theme)
 function App() {
   return (
     <ThemeProvider theme={theme}>
   
-      <TopBar/>
+      {/* <TopBar/> */}
+      <Dashboard/>
     </ThemeProvider>
    
   );

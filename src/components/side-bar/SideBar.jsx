@@ -27,7 +27,8 @@ const SideBar = () => {
         '& .MuiDrawer-paper': {
           width: drawerWidth,
           boxSizing: 'border-box',
-          backgroundColor:'#EE81B3',
+          backgroundColor:'#9ED2C6',
+          position: "absolute",
         },
       }}
       variant="permanent"
@@ -40,7 +41,7 @@ const SideBar = () => {
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon/>}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
