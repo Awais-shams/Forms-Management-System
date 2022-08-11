@@ -1,8 +1,12 @@
-
-
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Dashboard from './components/dashboard/Dashboard';
-import TopBar from './components/top-bar/TopBar';
+
+
+// React Router V6
+import { Routes,Route } from 'react-router-dom';
+
+// HR-Form Components
+import ResignationForm from './components/hr-forms/ResignationForm';
 
 const theme=createTheme({
   palette: {
@@ -45,8 +49,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
   
-      {/* <TopBar/> */}
       <Dashboard/>
+      <Routes>
+        <Route path='resignationForm' element={<ResignationForm/>}/>
+      </Routes>
     </ThemeProvider>
    
   );

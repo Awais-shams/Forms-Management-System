@@ -32,13 +32,14 @@ import IconButton from '@mui/material/IconButton';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
+// import ResignationForm from '../hr-forms/ResignationForm';
 
 
 
-
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 function Dashboard(props) {
+
 
     //   const container = window !== undefined ? () => window().document.body : undefined;
     //   const { window } = props;
@@ -190,7 +191,7 @@ function Dashboard(props) {
           <ListItems/>
         </Drawer>
       </Box>
-      <Box
+      {/* <Box
         component="main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
@@ -201,7 +202,8 @@ function Dashboard(props) {
         <Typography paragraph>
           Forms
         </Typography>
-      </Box>
+        <ResignationForm/>
+      </Box> */}
     </Box>
   );
 }
