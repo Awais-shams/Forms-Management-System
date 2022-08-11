@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container,Paper,Typography,TextField,Stack,Breadcrumbs,Link} from '@mui/material'
+import { Container,Paper,Typography,TextField,Stack,Breadcrumbs,Link,Button} from '@mui/material'
 import Grid from '@mui/material/Grid'
 
 import { useFormik } from 'formik'
@@ -13,16 +13,23 @@ const initialValues={
     learningExp:''
 }
 
+const onSubmit=values=>{
+    console.log(values)
+}
+
 const ResignationForm = () => {
 
     const formik=useFormik({
         initialValues,
+        onSubmit
     })
 
   return (
     <Paper elevation={3} sx={{ml:30,mt:12}}>
+    
+    <form onSubmit={formik.handleSubmit}>
 
-    <Grid container spacing={2} sx={{pl:10,pr:10}}>
+    <Grid container spacing={2} sx={{pl:10,pr:10,pb:5}}>
 
             <Grid item lg={12}>
             <Typography variant='h4'>Resignation Form</Typography>
@@ -65,6 +72,9 @@ const ResignationForm = () => {
                 id="lastName"
                 name="lastName"
                 label="Last Name"
+                type="text"
+                value={formik.values.lastName}
+                onChange={formik.handleChange}
                 helperText="Enter Last Name"
             />
 
@@ -78,9 +88,12 @@ const ResignationForm = () => {
 
             <TextField
             fullWidth
-            id="leave"
-            name="leave"
+            id="leaving"
+            name="leaving"
             label="Leaving"
+            type="text"
+            value={formik.values.leaving}
+            onChange={formik.handleChange}
             helperText="Enter the leaving details"
             />
 
@@ -94,9 +107,12 @@ const ResignationForm = () => {
 
             <TextField
             fullWidth
-            id="experience"
-            name="experience"
+            id="companyExp"
+            name="companyExp"
             label="Experience"
+            type="text"
+            value={formik.values.companyExp}
+            onChange={formik.handleChange}
             helperText="Share your company experience"
             />
 
@@ -111,18 +127,25 @@ const ResignationForm = () => {
 
             <TextField
             fullWidth
-            id="learning"
-            name="learning"
+            id="learningExp"
+            name="learningExp"
             label="Learning"
             multiline
             rows={5}
+            type="text"
+            value={formik.values.learningExp}
+            onChange={formik.handleChange}
             helperText="Share your learning experience"
             />
 
            </Grid>
 
+            <Grid item lg={12}>
+            <Button variant="contained" type='submit'>Submit</Button>
+            </Grid>
           
     </Grid>
+    </form>
 
     
 
