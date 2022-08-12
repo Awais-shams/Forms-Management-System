@@ -7,6 +7,7 @@ import { Routes,Route } from 'react-router-dom';
 
 // HR-Form Components
 import ResignationForm from './components/hr-forms/ResignationForm';
+import EmployeeForm from './components/hr-forms/EmployeeForm';
 
 const theme=createTheme({
   palette: {
@@ -52,6 +53,7 @@ function App() {
       <Dashboard/>
       <Routes>
         <Route path='resignationForm' element={<ResignationForm/>}/>
+        <Route path='employeeForm' element={<EmployeeForm/>}/>
       </Routes>
     </ThemeProvider>
    

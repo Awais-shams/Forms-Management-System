@@ -2,11 +2,11 @@ export const hrForms=[
 
     {
         text:"Resignation Form",
-        path:"/resignationForm"
+        path:"resignationForm"
     },
     {
-        text:"Employee Evaluation Form",
-        path:"/resignationForm"
+        text:"Employee Form",
+        path:"employeeForm"
     },
     {
         text:"Job Application Form",
