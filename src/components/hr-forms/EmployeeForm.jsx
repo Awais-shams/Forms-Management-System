@@ -14,13 +14,16 @@ import Grid from "@mui/material/Grid";
 
 import { Formik, Form, Field, FieldArray } from "formik";
 import * as Yup from "yup";
+import { ContactSupportOutlined } from "@mui/icons-material";
 
 const initialValues = {
-  phoneNumbers: [""],
+  phoneNumbers: [0],
 };
-
 const validationSchema = Yup.object({
-  phoneNumbers: Yup.number().required("Required").positive().integer(),
+  phoneNumbers: Yup.number()
+    .positive()
+    .nullable(true)
+    .transform((val) => (val === val ? val : null)),
 });
 
 const EmployeeForm = () => {
@@ -47,42 +50,68 @@ const EmployeeForm = () => {
           }}
         >
           <Form>
-              <FieldArray name='phoneNumbers'>
-                {
-                  (fieldArrayProps)=>{
-                    const {push,remove,form}=fieldArrayProps
-                    const {values,handleBlur,handleChange,touched,errors}=form
-                    const {phoneNumbers}=values
-                    console.log(phoneNumbers)
-                    return(
-                      phoneNumbers.map((phNo,idx)=>{
-                        console.log("errors",errors)
-                        console.log("touched",touched)
-                        return(
-                      <Grid item lg={12}>
-                          <TextField
-                            fullWidth
-                            id={`phNo[${idx}]`}
-                            name={`phNo[${idx}]`}
-                            label="Phone Numbers"
-                            type="text"
-                            value={phNo[idx]}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            // error={touched.phNo[idx] && errors.phNo[idx]}
-                            // helperText={touched.phNo[idx] && errors.phNo[idx]}
-                          />
-                      </Grid>
+            <FieldArray name="phoneNumbers">
+              {(fieldArrayProps) => {
+                const { form, remove, push } = fieldArrayProps;
+                const { values, errors, touched, handleChange, handleBlur } =
+                  form;
+                const { phoneNumbers } = values;
+                // console.log(phoneNumbers)
+                // console.log(form)
+                console.log("errors", errors);
+                return (
+                  <>
+                    <Grid item>
+                      {phoneNumbers.map((phoneNumber, index) => {
+                        console.log(phoneNumber);
+                        return (
+                          <Grid item>
+                            <TextField
+                              key={() => Math.random()}
+                              fullWidth
+                              type="number"
+                              id={`phoneNumbers[${index}]`}
+                              name={`phoneNumbers[${index}]`}
+                              label="First Name"
+                              value={phoneNumber[index]}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              error={Boolean(
+                                touched?.phoneNumbers &&
+                                  errors?.phoneNumbers
+                              )}
+                              helperText={
+                                touched.phoneNumbers && errors.phoneNumbers
+                                  ? errors.phoneNumbers
+                                  : null
+                              }
+                            />
+                            <Button
+                              variant="contained"
+                              onClick={() => remove(index)}
+                            >
+                              Remove
+                            </Button>
+                            <Button
+                              variant="contained"
+                              onClick={() => push(index)}
+                            >
+                              Add
+                            </Button>
+                          </Grid>
+                        );
+                      })}
+                    </Grid>
+                  </>
+                );
+              }}
+            </FieldArray>
 
-                        )
-                      })
-                    )
-                  }
-                }
-              </FieldArray>
-              <Grid item lg={12}>
-                  <Button type="submit" variant="outlined">SUBMIT</Button>
-              </Grid>
+            <Grid item lg={12}>
+              <Button type="submit" variant="contained">
+                SUBMIT
+              </Button>
+            </Grid>
           </Form>
         </Formik>
       </Grid>

@@ -25,10 +25,10 @@ import { useNavigate } from "react-router-dom";
 
 // useReducer
 const initialValue={
-  hr:true,
-  ecommerce:true,
-  education:true,
-  nested:true
+  hr:false,
+  ecommerce:false,
+  education:false,
+  nested:false
 }
 
 const reducer=(state,action)=>{
