@@ -14,17 +14,17 @@ import Grid from "@mui/material/Grid";
 
 import { Formik, Form, Field, FieldArray } from "formik";
 import * as Yup from "yup";
-import { ContactSupportOutlined } from "@mui/icons-material";
 
 const initialValues = {
   phoneNumbers: [0],
 };
-const validationSchema = Yup.object({
+const validationSchema =Yup.object({
   phoneNumbers: Yup.number()
-    .positive()
-    .nullable(true)
-    .transform((val) => (val === val ? val : null)),
-});
+  .positive()
+  .nullable(true)
+  .transform((val) => (val === val ? val : null))
+
+})
 
 const EmployeeForm = () => {
   return (
@@ -56,6 +56,7 @@ const EmployeeForm = () => {
                 const { values, errors, touched, handleChange, handleBlur } =
                   form;
                 const { phoneNumbers } = values;
+
                 // console.log(phoneNumbers)
                 // console.log(form)
                 console.log("errors", errors);
@@ -65,25 +66,24 @@ const EmployeeForm = () => {
                       {phoneNumbers.map((phoneNumber, index) => {
                         console.log(phoneNumber);
                         return (
-                          <Grid item>
+                          <Grid item key={index}>
                             <TextField
-                              key={() => Math.random()}
                               fullWidth
                               type="number"
                               id={`phoneNumbers[${index}]`}
                               name={`phoneNumbers[${index}]`}
-                              label="First Name"
+                              label="Phone Number"
                               value={phoneNumber[index]}
                               onChange={handleChange}
                               onBlur={handleBlur}
                               error={Boolean(
-                                touched?.phoneNumbers &&
-                                  errors?.phoneNumbers
+                                  touched.phoneNumbers?touched.phoneNumbers[index]:null &&
+                                  errors.phoneNumbers?errors.phoneNumbers[index]:null
+                                  
                               )}
                               helperText={
-                                touched.phoneNumbers && errors.phoneNumbers
-                                  ? errors.phoneNumbers
-                                  : null
+                                (touched.phoneNumbers?touched.phoneNumbers[index]:null &&
+                                errors.phoneNumbers?errors.phoneNumbers[index]:null)?errors.phoneNumbers:null
                               }
                             />
                             <Button

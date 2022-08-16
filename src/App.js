@@ -8,6 +8,8 @@ import { Routes,Route } from 'react-router-dom';
 // HR-Form Components
 import ResignationForm from './components/hr-forms/ResignationForm';
 import EmployeeForm from './components/hr-forms/EmployeeForm';
+import JobApplicationForm from './components/hr-forms/JobApplicationForm';
+import MemoHooks from './components/hr-forms/MemoHooks';
 
 const theme=createTheme({
   palette: {
@@ -54,6 +56,8 @@ function App() {
       <Routes>
         <Route path='resignationForm' element={<ResignationForm/>}/>
         <Route path='employeeForm' element={<EmployeeForm/>}/>
+        <Route path='jobApplicationForm' element={<JobApplicationForm/>}/>
+        <Route path='memoHooks' element={<MemoHooks/>}/>
       </Routes>
     </ThemeProvider>
    

@@ -10,11 +10,11 @@ export const hrForms=[
     },
     {
         text:"Job Application Form",
-        path:"/resignationForm"
+        path:"jobApplicationForm"
     },
     {
-        text:"Employee Satisfaction Form",
-        path:"/resignationForm"
+        text:"Memo Hooks",
+        path:"/memoHooks"
     },
     {
         text:"Employee Emergency Information Form",

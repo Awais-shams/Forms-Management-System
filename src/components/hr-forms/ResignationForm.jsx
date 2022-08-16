@@ -13,7 +13,7 @@ import {
 import Grid from "@mui/material/Grid";
 
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import * as Yup from "yup"; 
 
 const initialValues = {
   firstName: "",
