@@ -47,13 +47,16 @@ function Dashboard(props) {
 
   const [anchorElUser, setAnchorElUser] = useState(false);
 
-  const handleOpenUserMenu = useCallback((event) => {
+  const handleOpenUserMenu = (event) => {
+    console.log("open Menu Rendering");
     setAnchorElUser(event.currentTarget);
-  }, []);
+  };
 
-  const handleCloseUserMenu = useCallback(() => {
+  const handleCloseUserMenu = () => {
+    console.log("Close Menu Rendering");
+
     setAnchorElUser(null);
-  }, []);
+  };
 
   console.log("Dashboard Rendering");
 

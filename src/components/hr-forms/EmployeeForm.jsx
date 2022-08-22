@@ -25,8 +25,6 @@ const validationSchema = Yup.object({
     .transform((val) => (val === val ? val : null)),
 });
 
-console.log("Employee Form Rendering");
-
 const EmployeeForm = () => {
   return (
     <Paper elevation={3} sx={{ ml: 30, mt: 12 }}>

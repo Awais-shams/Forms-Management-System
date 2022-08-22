@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Container,
   Paper,
@@ -12,19 +12,12 @@ import {
 } from "@mui/material";
 
 const UseRefHook = () => {
-  let data = useRef([]);
+  const [count, setCount] = useState(0);
+  const data = useRef(0);
 
   useEffect(() => {
-    console.log("awos");
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => {
-        return response.json();
-      })
-      .then((res) => {
-        return (data.current = res);
-      })
-      .catch((err) => console.log(err));
-  }, [data]);
+    data.current = data.current + 1;
+  }, [count]);
 
   console.log(data.current);
 
@@ -43,7 +36,13 @@ const UseRefHook = () => {
             </Breadcrumbs>
           </Stack>
         </Grid>
-        <Grid item lg={12} md={12}></Grid>
+        <Grid item lg={12} md={12}>
+          <Typography variant="h4">{`count-${count}`}</Typography>
+          <Button variant="contained" onClick={() => setCount(count + 1)}>
+            Counter
+          </Button>
+          <Typography variant="h4">{`Render Count-${data.current}`}</Typography>
+        </Grid>
       </Grid>
     </Paper>
   );
