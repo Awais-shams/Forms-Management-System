@@ -10,6 +10,8 @@ import ResignationForm from './components/hr-forms/ResignationForm';
 import EmployeeForm from './components/hr-forms/EmployeeForm';
 import JobApplicationForm from './components/hr-forms/JobApplicationForm';
 import MemoHooks from './components/hr-forms/MemoHooks';
+import CustomHooks from './components/hr-forms/CustomHooks';
+import UseRefHook from './components/hr-forms/UseRefHook';
 
 const theme=createTheme({
   palette: {
@@ -58,6 +60,8 @@ function App() {
         <Route path='employeeForm' element={<EmployeeForm/>}/>
         <Route path='jobApplicationForm' element={<JobApplicationForm/>}/>
         <Route path='memoHooks' element={<MemoHooks/>}/>
+        <Route path='customHooks' element={<CustomHooks/>}/>
+        <Route path='useRefHooks' element={<UseRefHook/>}/>
       </Routes>
     </ThemeProvider>
    

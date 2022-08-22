@@ -18,13 +18,14 @@ import * as Yup from "yup";
 const initialValues = {
   phoneNumbers: [0],
 };
-const validationSchema =Yup.object({
+const validationSchema = Yup.object({
   phoneNumbers: Yup.number()
-  .positive()
-  .nullable(true)
-  .transform((val) => (val === val ? val : null))
+    .positive()
+    .nullable(true)
+    .transform((val) => (val === val ? val : null)),
+});
 
-})
+console.log("Employee Form Rendering");
 
 const EmployeeForm = () => {
   return (
@@ -77,13 +78,22 @@ const EmployeeForm = () => {
                               onChange={handleChange}
                               onBlur={handleBlur}
                               error={Boolean(
-                                  touched.phoneNumbers?touched.phoneNumbers[index]:null &&
-                                  errors.phoneNumbers?errors.phoneNumbers[index]:null
-                                  
+                                touched.phoneNumbers
+                                  ? touched.phoneNumbers[index]
+                                  : null && errors.phoneNumbers
+                                  ? errors.phoneNumbers[index]
+                                  : null
                               )}
                               helperText={
-                                (touched.phoneNumbers?touched.phoneNumbers[index]:null &&
-                                errors.phoneNumbers?errors.phoneNumbers[index]:null)?errors.phoneNumbers:null
+                                (
+                                  touched.phoneNumbers
+                                    ? touched.phoneNumbers[index]
+                                    : null && errors.phoneNumbers
+                                    ? errors.phoneNumbers[index]
+                                    : null
+                                )
+                                  ? errors.phoneNumbers
+                                  : null
                               }
                             />
                             <Button
